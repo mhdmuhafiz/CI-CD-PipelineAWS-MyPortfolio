@@ -5,16 +5,24 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - echo Installing dependencies...
-      - npm ci --legacy-peer-deps
+      - echo "Nothing to install for static site"
+
+  pre_build:
+    commands:
+      - echo "Pre-build phase started"
 
   build:
     commands:
-      - echo Building the React app...
-      - npm run build
+      - echo "Build phase started"
+      - ls -la
+
+  post_build:
+    commands:
+      - echo "Build completed successfully"
 
 artifacts:
   files:
-    - '**/*'
-  base-directory: dist
-  discard-paths: no
+    - index.html
+    - style.css
+    - script.js
+  discard-paths: yes
